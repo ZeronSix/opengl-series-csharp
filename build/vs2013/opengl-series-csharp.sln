@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_project_skeleton", "..\.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_textures", "..\..\02_textures\02_textures.csproj", "{3D625F10-AB2E-4A25-BC67-C60B144907C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_matrices", "..\..\03_matrices\03_matrices.csproj", "{0DA71D0B-C1CB-4835-8CB6-F550BFEF3CD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3D625F10-AB2E-4A25-BC67-C60B144907C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D625F10-AB2E-4A25-BC67-C60B144907C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D625F10-AB2E-4A25-BC67-C60B144907C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DA71D0B-C1CB-4835-8CB6-F550BFEF3CD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DA71D0B-C1CB-4835-8CB6-F550BFEF3CD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DA71D0B-C1CB-4835-8CB6-F550BFEF3CD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DA71D0B-C1CB-4835-8CB6-F550BFEF3CD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
