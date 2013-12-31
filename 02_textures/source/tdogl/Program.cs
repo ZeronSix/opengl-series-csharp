@@ -120,6 +120,15 @@ namespace tdogl
             GL.UseProgram(_object);
         }
 
+        public bool IsInUse
+        {
+            get {
+                int currentProgram = 0;
+                GL.GetInteger(GetPName.CurrentProgram, out currentProgram);
+                return (currentProgram == _object);
+            }
+        }
+
         public void StopUsing()
         {
             GL.UseProgram(0);
