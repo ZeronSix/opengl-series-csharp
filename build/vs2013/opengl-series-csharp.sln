@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_textures", "..\..\02_tex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_matrices", "..\..\03_matrices\03_matrices.csproj", "{0DA71D0B-C1CB-4835-8CB6-F550BFEF3CD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_camera", "..\..\04_camera\04_camera.csproj", "{91D7684C-B4F2-4C10-9252-2D8D0AB1FF89}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0DA71D0B-C1CB-4835-8CB6-F550BFEF3CD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DA71D0B-C1CB-4835-8CB6-F550BFEF3CD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DA71D0B-C1CB-4835-8CB6-F550BFEF3CD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91D7684C-B4F2-4C10-9252-2D8D0AB1FF89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91D7684C-B4F2-4C10-9252-2D8D0AB1FF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91D7684C-B4F2-4C10-9252-2D8D0AB1FF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91D7684C-B4F2-4C10-9252-2D8D0AB1FF89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -35,6 +35,7 @@ namespace opengl_series
         private static Program _gProgram;
         private static uint gVAO = 0, gVBO = 0;
         private static float _gDegreesRotated = 0.0f;
+        private static Camera _gCamera = new Camera();
 
         // loads the vertex shader and fragment shader, and links them to make the global gProgram
         private static void LoadShaders()
@@ -43,22 +44,8 @@ namespace opengl_series
             shaders.Add(Shader.ShaderFromFile("vertex-shader.glsl", ShaderType.VertexShader));
             shaders.Add(Shader.ShaderFromFile("fragment-shader.glsl", ShaderType.FragmentShader));
             _gProgram = new Program(shaders);
-
-            _gProgram.Use();
-
-            // set the "projection" uniform in the vertex shader, because it's not going to change
-            Matrix projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(50.0f), (float)ScreenSize.X / (float)ScreenSize.Y, 0.1f, 10.0f);
-            // Matrix projection = Matrix.CreateOrthographicOffCenter(-2, 2, -2, 2, 0.1f, 10);
-            _gProgram.SetUniform("projection", ref projection);
-
-            // set the "camera" uniform in the vertex shader, because it's also not going to change
-            Matrix camera = Matrix.LookAt(new Vector3(3, 3, 3), new Vector3(0, 0, 0), new Vector3(0, 1, 0));
-            _gProgram.SetUniform("camera", ref camera);
-
-            _gProgram.StopUsing();
         }
 
-        // loads a cube into the VAO global
         private static void LoadCube()
         {
             // make and bind the VAO
@@ -130,8 +117,7 @@ namespace opengl_series
             GL.EnableVertexAttribArray(_gProgram.Attrib("vertTexCoord"));
             GL.VertexAttribPointer(_gProgram.Attrib("vertTexCoord"), 2, VertexAttribPointerType.Float, true, 5 * sizeof(float), 3 * sizeof(float));
 
-            // unbind the VBO and VAO
-            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+            // unbind the VAO
             GL.BindVertexArray(0);
         }
 
@@ -151,6 +137,9 @@ namespace opengl_series
 
             // bind the program (the shaders)
             _gProgram.Use();
+
+            Matrix m = _gCamera.CombinedMatrix;
+            _gProgram.SetUniform("camera", ref m);
 
             // set the "model" uniform in the vertex shader, based on the gDegreesRotated global
             Matrix model = Matrix.CreateFromAxisAngle(new Vector3(0, 1, 0), MathHelper.ToRadians(_gDegreesRotated));
@@ -188,6 +177,37 @@ namespace opengl_series
 
             //don't go over 360 degrees
             while (_gDegreesRotated > 360.0f) _gDegreesRotated -= 360.0f;
+
+            //move position of camera based on WASD keys, and XZ keys for up and down
+            float moveSpeed = 2.0f; //units per second
+
+            if (Glfw.GetKey(_window, Key.S)) {
+                _gCamera.OffsetPosition((float)secondsElapsed * moveSpeed * -_gCamera.Forward);
+            }
+            else if (Glfw.GetKey(_window, Key.W)) {
+                _gCamera.OffsetPosition((float)secondsElapsed * moveSpeed * _gCamera.Forward);
+            }
+            if (Glfw.GetKey(_window, Key.A)) {
+                _gCamera.OffsetPosition((float)secondsElapsed * moveSpeed * -_gCamera.Right);
+            }
+            else if (Glfw.GetKey(_window, Key.D)) {
+                _gCamera.OffsetPosition((float)secondsElapsed * moveSpeed * _gCamera.Right);
+            }
+            if (Glfw.GetKey(_window, Key.Z)) {
+                _gCamera.OffsetPosition((float)secondsElapsed * moveSpeed * -new Vector3(0, 1, 0));
+            }
+            else if (Glfw.GetKey(_window, Key.X)) {
+                _gCamera.OffsetPosition((float)secondsElapsed * moveSpeed * new Vector3(0, 1, 0));
+            }
+
+            //rotate camera based on mouse movement
+            float mouseSensitivity = 0.1f;
+            double mouseX, mouseY;
+            Glfw.GetCursorPos(_window, out mouseX, out mouseY);
+            _gCamera.OffsetOrientation(mouseSensitivity * (float)mouseY, mouseSensitivity * (float)mouseX);
+            Glfw.SetCursorPos(_window, 0, 0); //reset the mouse, so it doesn't go out of the window
+
+            // TODO: increase or decrease field of view based on mouse wheel
         } 
 
         // the pragram starts here
@@ -205,6 +225,10 @@ namespace opengl_series
             if (_window.Equals(GlfwWindowPtr.Null))
                 throw new Exception("glfwOpenWindow failed. Can your hardware handle OpenGL 3.2?");
             Glfw.MakeContextCurrent(_window);
+
+            // GLFW settings
+            Glfw.SetInputMode(_window, InputMode.CursorMode, CursorMode.CursorHidden | CursorMode.CursorCaptured);
+            Glfw.SetCursorPos(_window, 0, 0);
 
             // TODO: GLEW in C#
 
@@ -226,6 +250,9 @@ namespace opengl_series
             // create buffer and fill it with the points of the triangle
             LoadCube();
 
+            _gCamera.Position = new Vector3(0, 0, 4);
+            _gCamera.ViewportAspectRatio = (float)ScreenSize.X / (float)ScreenSize.Y;
+
             double lastTime = Glfw.GetTime();
             // run while window is open
             while (!Glfw.WindowShouldClose(_window)) {
@@ -236,6 +263,9 @@ namespace opengl_series
 
                 // draw one frame
                 Render();
+                //exit program if escape key is pressed
+                if (Glfw.GetKey(_window, Key.Escape))
+                    Glfw.SetWindowShouldClose(_window, true);
             }
 
             // clean up and exit
@@ -248,6 +278,7 @@ namespace opengl_series
                 AppMain();
             } catch (Exception e) {
                 Console.WriteLine(e.Message);
+                Console.ReadLine();
                 Environment.Exit(1);
             }
         }
