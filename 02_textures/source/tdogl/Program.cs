@@ -1,4 +1,24 @@
-﻿using System;
+﻿/*
+ tdogl.Program
+ 
+ Copyright 2012 Thomas Dalling - http://tomdalling.com/
+ C# Port is made by Vyacheslav Zeronov - zeronsix@gmail.com
+ C# Port is based on Pencil.Gaming library by Antonie Blom - https://github.com/antonijn/Pencil.Gaming
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ */
+
+using System;
 using System.Collections.Generic;
 using Pencil.Gaming.Graphics;
 
@@ -88,6 +108,21 @@ namespace tdogl
                 throw new Exception("Program attribute not found: " + uniformName);
 
             return uniform;
+        }
+
+        public void SetUniform(string uniformName, int value)
+        {
+            GL.Uniform1(Uniform(uniformName), value);
+        }
+
+        public void Use()
+        {
+            GL.UseProgram(_object);
+        }
+
+        public void StopUsing()
+        {
+            GL.UseProgram(0);
         }
 
         private uint _object;

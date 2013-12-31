@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{90F16E39-4BA3-46C6-9113-3B8C373F18A2}</ProjectGuid>
+    <ProjectGuid>{3D625F10-AB2E-4A25-BC67-C60B144907C1}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>tdogl</RootNamespace>
-    <AssemblyName>01_project_skeleton</AssemblyName>
+    <AssemblyName>02_textures</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\debug\01_project_skeleton\</OutputPath>
+    <OutputPath>..\bin\debug\02_textures\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -26,7 +26,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\release\01_project_skeleton\</OutputPath>
+    <OutputPath>..\bin\release\02_textures\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -41,6 +41,7 @@
     <Content Include="extlibs\natives64\openal32.dll" />
     <Content Include="extlibs\natives64\wrap_oal.dll" />
     <Content Include="lib\Pencil.Gaming.dll" />
+    <Content Include="resources\hazard.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Pencil.Gaming, Version=1.0.5069.36313, Culture=neutral, processorArchitecture=MSIL">
@@ -48,20 +49,23 @@
       <HintPath>lib\Pencil.Gaming.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="source\fragment-shader.glsl" />
-    <None Include="source\vertex-shader.glsl" />
+    <None Include="resources\fragment-shader.glsl" />
+    <None Include="resources\vertex-shader.glsl" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="source\Program.cs" />
-    <Compile Include="source\Tutorial01.cs" />
-    <Compile Include="source\Shader.cs" />
+    <Compile Include="source\tdogl\Bitmap.cs" />
+    <Compile Include="source\tdogl\Program.cs" />
+    <Compile Include="source\tdogl\Texture.cs" />
+    <Compile Include="source\Tutorial02.cs" />
+    <Compile Include="source\tdogl\Shader.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy /e  /q /y "$(ProjectDir)extlibs" "$(TargetDir)"
-xcopy /e  /q /y "$(ProjectDir)source\*.glsl" "$(TargetDir)"</PostBuildEvent>
+xcopy /e  /q /y "$(ProjectDir)resources" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

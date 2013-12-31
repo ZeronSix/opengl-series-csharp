@@ -3,7 +3,7 @@
  
  Copyright 2012 Thomas Dalling - http://tomdalling.com/
  C# Port is made by Vyacheslav Zeronov - zeronsix@gmail.com
- C# Port is also based on Pencil.Gaming library by Antonie Blom - https://github.com/antonijn/Pencil.Gaming
+ C# Port is based on Pencil.Gaming library by Antonie Blom - https://github.com/antonijn/Pencil.Gaming
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -31,6 +31,7 @@ namespace opengl_series
     {
         private static readonly Vector2i ScreenSize = new Vector2i(800, 600);
         private static GlfwWindowPtr _window;
+        private static Texture _gTexture;
         private static Program _gProgram;
         private static uint gVAO = 0, gVBO = 0;
 
@@ -56,20 +57,32 @@ namespace opengl_series
 
             // Put the three triangle verticies into the VBO
             float[] vertexData = new float[] {
-                 //  X     Y     Z
-                 0.0f, 0.8f, 0.0f,
-                -0.8f,-0.8f, 0.0f,
-                 0.8f,-0.8f, 0.0f
+                  //  X     Y     Z       U     V
+                 0.0f, 0.8f, 0.0f,   0.5f, 1.0f,
+                -0.8f,-0.8f, 0.0f,   0.0f, 0.0f,
+                 0.8f,-0.8f, 0.0f,   1.0f, 0.0f,
             };
             GL.BufferData<float>(BufferTarget.ArrayBuffer, new IntPtr(vertexData.Length * sizeof(float)), vertexData, BufferUsageHint.StaticDraw);
 
             // connect the xyz to the "vert" attribute of the vertex shader
             GL.EnableVertexAttribArray(_gProgram.Attrib("vert"));
-            GL.VertexAttribPointer(_gProgram.Attrib("vert"), 3, VertexAttribPointerType.Float, false, 0, 0);
+            GL.VertexAttribPointer(_gProgram.Attrib("vert"), 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
+
+            // connect the uv coords to the "vertTexCoord" attribute of the vertex shader
+            GL.EnableVertexAttribArray(_gProgram.Attrib("vertTexCoord"));
+            GL.VertexAttribPointer(_gProgram.Attrib("vertTexCoord"), 2, VertexAttribPointerType.Float, true, 5 * sizeof(float), 3 * sizeof(float));
 
             // unbind the VBO and VAO
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             GL.BindVertexArray(0);
+        }
+
+        // loads the file "hazard.png" into gTexture
+        private static void LoadTexture()
+        {
+            Bitmap bmp = Bitmap.LoadFromFile("hazard.png");
+            bmp.FlipVertically();
+            _gTexture = new Texture(bmp);
         }
 
         // draws a single frame
@@ -80,7 +93,12 @@ namespace opengl_series
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
             // bind the program (the shaders)
-            GL.UseProgram(_gProgram.GlObject);
+            _gProgram.Use();
+
+            // bind the texture and set the "tex" uniform in the fragment shader
+            GL.ActiveTexture(TextureUnit.Texture0);
+            GL.BindTexture(TextureTarget.Texture2D, _gTexture.GLObject);
+            _gProgram.SetUniform("tex", 0);
 
             // bind the VAO (the triangle)
             GL.BindVertexArray(gVAO);
@@ -88,11 +106,10 @@ namespace opengl_series
             // draw the VAO
             GL.DrawArrays(BeginMode.Triangles, 0, 3);
 
-            // unbind the VAO
+            // unbind the VAO, the program and the texture
             GL.BindVertexArray(0);
-
-            // unbind the program 
-            GL.UseProgram(0);
+            GL.BindTexture(TextureTarget.Texture2D, 0);
+            _gProgram.StopUsing();
 
             // update events
             Glfw.PollEvents();
@@ -127,6 +144,9 @@ namespace opengl_series
 
             // load vertex and fragment shaders into opengl
             LoadShaders();
+
+            // load the texture
+            LoadTexture();
 
             // create buffer and fill it with the points of the triangle
             LoadTriangle();
