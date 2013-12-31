@@ -26,7 +26,7 @@ namespace tdogl
     /// <summary>
     /// Represents an OpenGL texture
     /// </summary>
-    public class Texture: IDisposable
+    public class Texture : IDisposable
     {
         private PixelInternalFormat TextureFormatForBitmapFormat(BitmapPixelFormat format)
         {
@@ -35,6 +35,17 @@ namespace tdogl
                 //case Format.GrayscaleAlpha: return PixelInternalFormat.LuminanceAlpha;
                 case BitmapPixelFormat.Format24bppRgb: return PixelInternalFormat.Rgb;
                 case BitmapPixelFormat.Format32bppArgb: return PixelInternalFormat.Rgba;
+                default: throw new Exception("Unrecognised Bitmap.Format");
+            }
+        }
+
+        private PixelFormat PixelFormatForBitmap(BitmapPixelFormat format)
+        {
+            switch (format) {
+                case BitmapPixelFormat.Format16bppGrayScale: return PixelFormat.Luminance;
+                //case Format.GrayscaleAlpha: return PixelInternalFormat.LuminanceAlpha;
+                case BitmapPixelFormat.Format24bppRgb: return PixelFormat.Bgr;
+                case BitmapPixelFormat.Format32bppArgb: return PixelFormat.Bgra;
                 default: throw new Exception("Unrecognised Bitmap.Format");
             }
         }
@@ -54,7 +65,7 @@ namespace tdogl
                           (int)bitmap.Width,
                           (int)bitmap.Height,
                           0,
-                          PixelFormat.Bgra,//(PixelFormat)TextureFormatForBitmapFormat(bitmap.Format),
+                          PixelFormatForBitmap(bitmap.Format),
                           PixelType.UnsignedByte,
                           bitmap.PixelBuffer);
             GL.BindTexture(TextureTarget.Texture2D, 0);
