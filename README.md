@@ -3,6 +3,8 @@
 This is a C# port of the code from a series of OpenGL articles on http://tomdalling.com/
 Port is based on a great library called Pencil.Gaming (https://github.com/antonijn/Pencil.Gaming)
 
+__WARNING: Although all articles have been ported and they are working, this port is still WIP!__
+
 List of articles that are already ported:
 
  1. [Getting Started in Xcode, Visual C++, and Linux](http://tomdalling.com/blog/modern-opengl/01-getting-started-in-xcode-and-visual-cpp/)
@@ -11,6 +13,7 @@ List of articles that are already ported:
  4. [Cameras, Vectors & Input](http://tomdalling.com/blog/modern-opengl/04-cameras-vectors-and-input/)
  5. [Model Assets & Instances](http://tomdalling.com/blog/modern-opengl/05-model-assets-and-instances/)
  6. [Diffuse Point Lighting](http://tomdalling.com/blog/modern-opengl/06-diffuse-point-lighting/)
+ 7. [More Lighting: Ambient, Specular, Attenuation, Gamma](http://tomdalling.com/blog/modern-opengl/07-more-lighting-ambient-specular-attenuation-gamma/)
  
 Original C++/Objective-C code is [here](https://github.com/tomdalling/opengl-series).
 
