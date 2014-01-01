@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05_asset_instance", "..\..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06_diffuse_lighting", "..\..\06_diffuse_lighting\06_diffuse_lighting.csproj", "{0D55F716-2FB7-42A3-8FDA-43628595EC70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07_more_lighting", "..\..\07_more_lighting\07_more_lighting.csproj", "{160F3F39-6D5A-423E-A498-8E7EF6264954}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{0D55F716-2FB7-42A3-8FDA-43628595EC70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D55F716-2FB7-42A3-8FDA-43628595EC70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D55F716-2FB7-42A3-8FDA-43628595EC70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{160F3F39-6D5A-423E-A498-8E7EF6264954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{160F3F39-6D5A-423E-A498-8E7EF6264954}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{160F3F39-6D5A-423E-A498-8E7EF6264954}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{160F3F39-6D5A-423E-A498-8E7EF6264954}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
