@@ -12,7 +12,7 @@ List of articles that are already ported:
  5. [Model Assets & Instances](http://tomdalling.com/blog/modern-opengl/05-model-assets-and-instances/)
  6. [Diffuse Point Lighting](http://tomdalling.com/blog/modern-opengl/06-diffuse-point-lighting/)
  
-Original C++ is [here](https://github.com/tomdalling/opengl-series).
+Original C++/Objective-C code is [here](https://github.com/tomdalling/opengl-series).
 
 # Other things that i need to do
 - Linux and Mac OS X support via Mono.
