@@ -16,9 +16,10 @@ Original C++/Objective-C code is [here](https://github.com/tomdalling/opengl-ser
 
 # Other things that i need to do
 - Linux and Mac OS X support via Mono.
-- do something with GLEW.
+- Android and iOS support via Xamarin.Android and Xamarin.iOS.
+- Do something with GLEW.
 - tdogl framework is not fully ported. Only things that need to compile the source code are ported.
-- fix some bugs
+- Fix some bugs
 
 # Credits
 
