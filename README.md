@@ -18,11 +18,11 @@ List of articles that are already ported:
  
 Original C++/Objective-C code is [here](https://github.com/tomdalling/opengl-series).
 
-# Other things that i need to do
+# Things that i need to do
 - Linux and Mac OS X support via Mono.
 - Android and iOS support via Xamarin.Android and Xamarin.iOS.
 - Do something with GLEW.
-- tdogl framework is not fully ported. Only things that need to compile the source code are ported.
+- tdogl framework is not fully ported. Only things that source code needs to be compiled are ported.
 - Fix some bugs
 
 # Credits
