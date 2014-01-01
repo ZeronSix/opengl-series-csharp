@@ -4,6 +4,7 @@ This is a C# port of the code from a series of OpenGL articles on http://tomdall
 Port is based on a great library called Pencil.Gaming (https://github.com/antonijn/Pencil.Gaming)
 
 __WARNING: Although all articles have been ported and they are working, this port is still WIP!__
+__There is a lot of things in this port that needs to be improved.__
 
 List of articles that are already ported:
 
