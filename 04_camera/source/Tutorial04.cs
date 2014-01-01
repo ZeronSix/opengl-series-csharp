@@ -206,8 +206,6 @@ namespace opengl_series
             Glfw.GetCursorPos(_window, out mouseX, out mouseY);
             _gCamera.OffsetOrientation(mouseSensitivity * (float)mouseY, mouseSensitivity * (float)mouseX);
             Glfw.SetCursorPos(_window, 0, 0); //reset the mouse, so it doesn't go out of the window
-
-            // TODO: increase or decrease field of view based on mouse wheel
         } 
 
         // the pragram starts here
@@ -229,6 +227,14 @@ namespace opengl_series
             // GLFW settings
             Glfw.SetInputMode(_window, InputMode.CursorMode, CursorMode.CursorHidden | CursorMode.CursorCaptured);
             Glfw.SetCursorPos(_window, 0, 0);
+            Glfw.SetScrollCallback(_window, new GlfwScrollFun((win, x, y) => {
+                //increase or decrease field of view based on mouse wheel
+                float zoomSensitivity = -0.2f;
+                float fieldOfView = _gCamera.FieldOfView + zoomSensitivity * (float)y;
+                if (fieldOfView < 5.0f) fieldOfView = 5.0f;
+                if (fieldOfView > 130.0f) fieldOfView = 130.0f;
+                _gCamera.FieldOfView = fieldOfView;
+            }));
 
             // TODO: GLEW in C#
 
