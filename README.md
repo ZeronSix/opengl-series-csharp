@@ -9,14 +9,20 @@ List of articles that are already ported:
  2. [Textures](http://tomdalling.com/blog/modern-opengl/02-textures/)
  3. [Matrices, Depth Buffering, Animation](http://tomdalling.com/blog/modern-opengl/03-matrices-depth-buffering-animation/)
  4. [Cameras, Vectors & Input](http://tomdalling.com/blog/modern-opengl/04-cameras-vectors-and-input/)
+ 5. [Model Assets & Instances](http://tomdalling.com/blog/modern-opengl/05-model-assets-and-instances/)
+ 6. [Diffuse Point Lighting](http://tomdalling.com/blog/modern-opengl/06-diffuse-point-lighting/)
+ 
+Original C++ is [here](https://github.com/tomdalling/opengl-series).
 
 # Other things that i need to do
 - Linux and Mac OS X support via Mono.
 - do something with GLEW.
+- tdogl framework is not fully ported. Only things that need to compile the source code are ported.
+- fix some bugs
 
 # Credits
 
-Thanks to Tom Dalling for creating these articles.
+Thanks to Tom Dalling for creating these articles. 
 
 Thanks to Antonie Blom for creating Pencil.Gaming.
 
