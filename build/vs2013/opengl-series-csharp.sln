@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_matrices", "..\..\03_mat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_camera", "..\..\04_camera\04_camera.csproj", "{91D7684C-B4F2-4C10-9252-2D8D0AB1FF89}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05_asset_instance", "..\..\05_asset_instance\05_asset_instance.csproj", "{B66EC857-4F2D-43B7-A9AB-F619A83743CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{91D7684C-B4F2-4C10-9252-2D8D0AB1FF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91D7684C-B4F2-4C10-9252-2D8D0AB1FF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91D7684C-B4F2-4C10-9252-2D8D0AB1FF89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B66EC857-4F2D-43B7-A9AB-F619A83743CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B66EC857-4F2D-43B7-A9AB-F619A83743CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B66EC857-4F2D-43B7-A9AB-F619A83743CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B66EC857-4F2D-43B7-A9AB-F619A83743CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
