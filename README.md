@@ -17,6 +17,7 @@ List of articles that are already ported:
  7. [More Lighting: Ambient, Specular, Attenuation, Gamma](http://tomdalling.com/blog/modern-opengl/07-more-lighting-ambient-specular-attenuation-gamma/)
 
 VS2013 Solution is located at build\vs2013\
+
 Original C++/Objective-C code is [here](https://github.com/tomdalling/opengl-series).
 
 # Things that i need to do
