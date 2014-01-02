@@ -15,7 +15,8 @@ List of articles that are already ported:
  5. [Model Assets & Instances](http://tomdalling.com/blog/modern-opengl/05-model-assets-and-instances/)
  6. [Diffuse Point Lighting](http://tomdalling.com/blog/modern-opengl/06-diffuse-point-lighting/)
  7. [More Lighting: Ambient, Specular, Attenuation, Gamma](http://tomdalling.com/blog/modern-opengl/07-more-lighting-ambient-specular-attenuation-gamma/)
- 
+
+VS2013 Solution is located at build\vs2013\
 Original C++/Objective-C code is [here](https://github.com/tomdalling/opengl-series).
 
 # Things that i need to do
@@ -24,6 +25,7 @@ Original C++/Objective-C code is [here](https://github.com/tomdalling/opengl-ser
 - Do something with GLEW.
 - tdogl framework is not fully ported. Only things that source code needs to be compiled are ported.
 - Fix some bugs
+- Add solution files for VS2010 and MonoDevelop 4 (Xamarin Studio).
 
 # Credits
 
